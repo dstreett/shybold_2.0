@@ -19,9 +19,9 @@ void agent::updatePrey() {
     //you hand it chrome 1 values and chrome 2 values from genome
     n->update(g, inputs);
     //move based on ouptputs
-    //move_x_y(n->output_values[0] * pred_capture,  n->output_values[1] * pred_capture);
+    move_x_y(n->output_values[0] * pred_capture,  n->output_values[1] * pred_capture);
     //move_mag_theta(n->output_values[0], n->output_values[1], n->output_values[2]);
-    move_mag_theta(n->output_values[0], n->output_values[1], 0.0, pred_capture);
+    //move_mag_theta(n->output_values[0], n->output_values[1], 0.0, pred_capture);
     
 
 

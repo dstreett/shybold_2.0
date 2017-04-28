@@ -8,8 +8,6 @@ void network::update(std::shared_ptr<genome> g, std::vector<double> inputs) {
             //std::cout << "Input " << i << " " << o << " " << (o*(inputs.size()))+i << '\n';
             output_values[o] += (inputs[i] * g->getWeight( (o*inputs.size()) + i )  );
         }
-        if (o == 0) {
             output_values[o] = -1.0 + 2.0 * (1.0/(1.0+pow(2.7183,-1*output_values[o])));
-        }
     }    
 }
