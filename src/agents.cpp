@@ -32,13 +32,15 @@ void agent::updatePred(int time) {
     double tmp_x = x;
     double tmp_y = y;
     if (input_agent.size() != 0 && input_agent[0]) { //change this (loop througth input_agents and push_back onto inputs
-        inputs = { this->distance(input_agent[0]),  atan2(input_agent[0]->y - y, input_agent[0]->x - x), 0.0, 1.0 };
+        //inputs = { this->distance(input_agent[0]),  atan2(input_agent[0]->y - y, input_agent[0]->x - x), 0.0, 1.0 };
+        inputs = { 10.0*(input_agent[0]->x-x)/sensing_range_pred,  10.0*(input_agent[0]->y-y)/sensing_range_pred, 0.0, 1.0 };
     } else {
         inputs = { 0, 0, getRandom(), 1.0 };
     }
     //you hand it chrome 1 values and chrome 2 values from genome
     n->update(g, inputs);
-    move_mag_theta(n->output_values[0], n->output_values[1], 0.0, pred_capture);
+   // move_mag_theta(n->output_values[0], n->output_values[1], 0.0, pred_capture);
+    move_x_y(n->output_values[0] * pred_capture,  n->output_values[1] * pred_capture);
     
 
     double xdif = x - tmp_x;
@@ -51,7 +53,7 @@ void agent::updatePred(int time) {
     
     calc_stuff();
     consume(time);
-    chance_of_death(time);
+    //chance_of_death(time);
 
 }
 
